@@ -11,6 +11,8 @@ import { NewsComponent } from './news/news.component';
 import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { HeaderComponent } from './header/header.component';
 
+import {FlexLayoutModule, BREAKPOINT} from '@angular/flex-layout';
+
 const routes: Routes = [
   {
     path: 'about',
@@ -47,7 +49,8 @@ const routes: Routes = [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
-    MaterialImportsModule
+    MaterialImportsModule,
+    FlexLayoutModule
   ],
   providers: [],
   bootstrap: [AppComponent]
