@@ -9,15 +9,15 @@ export class HeaderComponent implements OnInit {
   navLinks = [
     {
       path: 'about',
-      label: 'About Us'
+      label: 'About'
     },
     {
       path: 'curriculum',
-      label: 'Our Curriculum'
+      label: 'Curriculum'
     },
     {
       path: 'news',
-      label: 'News and Events'
+      label: 'News'
     },
     {
       path: 'get-involved',
