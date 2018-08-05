@@ -1,5 +1,7 @@
 package eng.opp.domain;
 
+import org.springframework.security.crypto.bcrypt.BCrypt;
+
 public class User {
 	
 	private Long id;
@@ -61,7 +63,7 @@ public class User {
 	}
 
 	public void setPassword(String password) {
-		this.password = BCrypt.hashpw(password);
+		this.password = BCrypt.hashpw(password, BCrypt.gensalt());
 	}
 
 	public String getEmail() {
