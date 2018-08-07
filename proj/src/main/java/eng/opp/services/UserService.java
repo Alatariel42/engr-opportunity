@@ -1,6 +1,9 @@
 package eng.opp.services;
 
 import org.springframework.stereotype.Service;
+
+import eng.opp.domain.User;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.RowMapper;
@@ -14,15 +17,15 @@ public class UserService {
   @Autowired
   JdbcTemplate jdbcTemplate;
 
-  public ResponseEntity<> add(User user) {
-
+  public ResponseEntity<User> add(User user) {
+	  return null;
   }
 
-  public ResponseEntity<> update(User user) {
-
+  public ResponseEntity<User> update(User user) {
+	  return null;
   }
 
-  public ResponseEntity<> delete(User user) {
-
+  public ResponseEntity<User> delete(User user) {
+	  return null;
   }
 }
