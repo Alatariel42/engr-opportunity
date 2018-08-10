@@ -51,6 +51,7 @@ dependencies {
 	compile('org.springframework.cloud:spring-cloud-starter-security')
 	compile("org.springframework:spring-jdbc")
     compile('mysql:mysql-connector-java')
+	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.5.0'
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
