@@ -15,10 +15,12 @@ import org.springframework.http.ResponseEntity;
 public class UserService {
 
   @Autowired
-  JdbcTemplate jdbcTemplate;
+  JdbcTemplate jdbc;
 
   public ResponseEntity<User> add(User user) {
-	  return null;
+    String sql = "";
+    jdbc.update(sql, user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole(), user.getEmail());
+	  return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   public ResponseEntity<User> update(User user) {
