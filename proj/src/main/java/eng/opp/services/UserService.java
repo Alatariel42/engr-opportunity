@@ -21,8 +21,7 @@ public class UserService {
   * Adds a new user to the database
   */
   public ResponseEntity<User> add(User user) {
-    String sql = "INSERT INTO users(username, first_name, last_name, role, password, email)
-    values(?,?,?,?,?,?)";
+    String sql = "INSERT INTO users(username, first_name, last_name, role, password, email) values(?,?,?,?,?,?)";
     jdbc.update(sql, user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole(), user.getEmail());
 	  return new ResponseEntity<>(user, HttpStatus.OK);
   }
