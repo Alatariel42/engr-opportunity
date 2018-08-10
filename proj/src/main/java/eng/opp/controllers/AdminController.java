@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
+@RequestMapping(path="/admin")
 public class AdminController {
 
   @Autowired
@@ -16,15 +17,14 @@ public class AdminController {
 
   @GetMapping(path="/generate-tables")
   public ResponseEntity<String> generateTables() {
-    String sql = "CREATE TABLE IF NOT EXISTS users("
-    + "id INT(11) NOT NULL AUTO_INCREMENT,"
-    + "username VARCHAR(255) NOT NULL UNIQUE,"
-    + "first_name VARCHAR(255),"
-    + "last_name VARCHAR(255),"
+    String sql = "CREATE TABLE IF NOT EXISTS users ("
+    + "id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,"
+    + "username VARCHAR(191) NOT NULL UNIQUE,"
+    + "first_name VARCHAR(191),"
+    + "last_name VARCHAR(191),"
     + "role VARCHAR(50),"
-    + "password VARCHAR(255) NOT NULL,"
-    + "email VARCHAR(255) UNIQUE,"
-    + "PRIMARY KEY(id)"
+    + "password VARCHAR(191) NOT NULL,"
+    + "email VARCHAR(191) UNIQUE"
     + ")";
     jdbc.execute(sql);
     return new ResponseEntity<>("", HttpStatus.OK);
