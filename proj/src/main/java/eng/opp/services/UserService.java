@@ -17,17 +17,31 @@ public class UserService {
   @Autowired
   JdbcTemplate jdbc;
 
+  /**
+  * Adds a new user to the database
+  */
   public ResponseEntity<User> add(User user) {
-    String sql = "";
+    String sql = "INSERT INTO users(username, first_name, last_name, role, password, email)
+    values(?,?,?,?,?,?)";
     jdbc.update(sql, user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole(), user.getEmail());
 	  return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
+  /**
+  * Updates a user in the database
+  */
   public ResponseEntity<User> update(User user) {
-	  return null;
+    String sql = "UPDATE users SET first_name=?, last_name=?, role=?, password=?, email=? WHERE username=?";
+    jdbc.update(sql, user.getUsername(), user.getPassword(), user.getFirstName(), user.getLastName(), user.getRole(), user.getEmail());
+	  return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
-  public ResponseEntity<User> delete(User user) {
+  /**
+  * Removes a user from the database
+  */
+  public ResponseEntity<User> delete(String username) {
+    String sql = "DELETE FROM users WHERE username=?";
+    jdbc.update(sql, username);
 	  return null;
   }
 }

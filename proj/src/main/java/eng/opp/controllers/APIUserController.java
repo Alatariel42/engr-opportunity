@@ -11,31 +11,33 @@ import org.springframework.web.bind.annotation.RestController;
 import eng.opp.domain.User;
 
 @RestController
-@RequestMapping(path="/login")
+@RequestMapping(path="/users")
 public class APIUserController {
 
-  @PostMapping(path="/addUser")
-  public ResponseEntity<User> createUser() {
-	  return null;
+  @Autowired
+  private UserService userService;
+
+  @PostMapping(path="/")
+  public ResponseEntity<User> createUser(@RequestBody User user) {
+    if (user != null) {
+      return userService.add(user);
+    }
+	  return new ResponseEntity(HttpStatus.BAD_REQUEST);
   }
 
-  @PatchMapping(path="/updateEmail")
-  public ResponseEntity<User> updateUserEmail() {
-	  return null;
+  @PutMapping(path="/")
+  public ResponseEntity<User> updateUser(@RequestBody User user) {
+    if (user != null) {
+      return userService.update(user);
+    }
+    return new ResponseEntity(HttpStatus.BAD_REQUEST);
   }
 
-  @PatchMapping(path="/updatePassword")
-  public ResponseEntity<User> updateUserPassword() {
-	  return null;
-  }
-
-  @PutMapping(path="/updateUser")
-  public ResponseEntity<User> updateUser() {
-	  return null;
-  }
-
-  @DeleteMapping(path="/deleteUser")
-  public ResponseEntity<User> deleteUser() {
-	  return null;
+  @DeleteMapping(path="/{username}")
+  public ResponseEntity<User> deleteUser(@PathVariable String username ) {
+    if (user != null) {
+      return userService.delete(username);
+    }
+    return new ResponseEntity(HttpStatus.BAD_REQUEST);
   }
 }
