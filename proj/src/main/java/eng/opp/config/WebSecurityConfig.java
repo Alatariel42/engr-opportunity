@@ -38,16 +38,18 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     auth.jdbcAuthentication().dataSource(getDataSource())
         .usersByUsernameQuery("select username, password, enabled"
             + " from users where username=?")
-        .authoritiesByUsernameQuery("select username, role "
+        .authoritiesByUsernameQuery("select username, role as authority "
             + "from users where username=?")
         .passwordEncoder(new BCryptPasswordEncoder());
   }
 
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
-    http.authorizeRequests().anyRequest().authenticated()
-    .and()
-    .httpBasic();
+      http.csrf().disable() // For local testing only - should be disabled on production
+      .authorizeRequests().antMatchers("*.js","*.html","*.js").permitAll().and()
+      .authorizeRequests().antMatchers("*").authenticated()
+      .and()
+      .httpBasic();
 	}
 
 }
