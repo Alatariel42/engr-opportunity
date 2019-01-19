@@ -43,13 +43,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         .passwordEncoder(new BCryptPasswordEncoder());
   }
 
-	@Override
-	protected void configure(HttpSecurity http) throws Exception {
-      http.csrf().disable() // For local testing only - should be disabled on production
-      .authorizeRequests().antMatchers("*.js","*.html","*.js").permitAll().and()
-      .authorizeRequests().antMatchers("*").authenticated()
-      .and()
-      .httpBasic();
-	}
+  @Override
+  protected void configure(HttpSecurity http) throws Exception {
+    http.csrf().and()
+      .authorizeRequests()
+	      .antMatchers("/web/**", "/*.js","/*.html","/*.js", "/", "/index.html").permitAll()
+	      .anyRequest().authenticated()
+      .and().httpBasic();
+  }
 
 }
+  
