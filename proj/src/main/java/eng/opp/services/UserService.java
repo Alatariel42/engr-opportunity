@@ -23,7 +23,7 @@ public class UserService {
   public ResponseEntity<User> add(User user) {
     String sql = "INSERT INTO users(username, first_name, last_name, role, password, email, enabled) values(?,?,?,?,?,?, TRUE)";
     jdbc.update(sql, user.getUsername(), user.getFirstName(), user.getLastName(), user.getRole(), user.getPassword(), user.getEmail());
-	  return new ResponseEntity<>(user, HttpStatus.OK);
+	return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   /**
@@ -32,7 +32,7 @@ public class UserService {
   public ResponseEntity<User> update(User user) {
     String sql = "UPDATE users SET first_name=?, last_name=?, role=?, password=?, email=? WHERE username=?";
     jdbc.update(sql, user.getFirstName(), user.getLastName(), user.getRole(), user.getPassword(), user.getEmail(), user.getUsername());
-	  return new ResponseEntity<>(user, HttpStatus.OK);
+	return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   /**

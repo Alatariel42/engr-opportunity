@@ -1,0 +1,10 @@
+CREATE TABLE IF NOT EXISTS users (
+     id INT UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
+     username VARCHAR(191) NOT NULL UNIQUE,
+     enabled BOOLEAN NOT NULL DEFAULT TRUE,
+     first_name VARCHAR(191),
+     last_name VARCHAR(191),
+     role VARCHAR(50),
+     password VARCHAR(191) NOT NULL,
+     email VARCHAR(191) UNIQUE
+);

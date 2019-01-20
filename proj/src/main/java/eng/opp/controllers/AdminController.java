@@ -30,4 +30,15 @@ public class AdminController {
     jdbc.execute(sql);
     return new ResponseEntity<>("", HttpStatus.OK);
   }
+  
+  /**
+   * Validates the user is authenticated as an admin
+   * If request gets this far, they are an admin
+   * Otherwise, Spring Security will reject
+   * @return
+   */
+  @GetMapping(path="/auth")
+  public ResponseEntity<String> auth() {
+	  return new ResponseEntity<>("", HttpStatus.OK);
+  }
 }
