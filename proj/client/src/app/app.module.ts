@@ -12,6 +12,8 @@ import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { HeaderComponent } from './header/header.component';
 
 import {FlexLayoutModule, BREAKPOINT} from '@angular/flex-layout';
+import { EventsComponent } from './events/events.component';
+import { FullCalendarModule } from 'ng-fullcalendar';
 
 const routes: Routes = [
   {
@@ -25,6 +27,10 @@ const routes: Routes = [
   {
     path: 'news',
     component: NewsComponent
+  },
+  {
+    path: 'events',
+    component: EventsComponent
   },
   {
     path: 'get-involved',
@@ -43,14 +49,16 @@ const routes: Routes = [
     CurriculumComponent,
     NewsComponent,
     GetInvolvedComponent,
-    HeaderComponent
+    HeaderComponent,
+    EventsComponent
   ],
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
     RouterModule.forRoot(routes),
     MaterialImportsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
+    FullCalendarModule
   ],
   providers: [],
   bootstrap: [AppComponent]

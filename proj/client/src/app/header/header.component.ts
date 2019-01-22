@@ -16,9 +16,13 @@ export class HeaderComponent implements OnInit {
       label: 'Curriculum'
     },
     {
-      path: 'news',
-      label: 'News'
+      path: 'events',
+      label: 'Events'
     },
+    // {
+    //   path: 'news',
+    //   label: 'News'
+    // },
     {
       path: 'get-involved',
       label: 'Get Involved'
