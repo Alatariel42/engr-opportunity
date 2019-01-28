@@ -25,64 +25,65 @@ import eng.opp.domain.User;
 @PropertySource("classpath:application.properties")
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-  @Autowired
-  private Environment env;
+	@Autowired
+	private Environment env;
 
-  @Bean
-  public DataSource getDataSource() {
-    BasicDataSource dataSource = new BasicDataSource();
-    dataSource.setDriverClassName(env.getProperty("mysql.driver"));
-    dataSource.setUrl(env.getProperty("mysql.jdbcUrl"));
-    dataSource.setUsername(env.getProperty("mysql.username"));
-    dataSource.setPassword(env.getProperty("mysql.password"));
-    initData(dataSource);
-    return dataSource;
-  }
-  
-  /**
-   * DB has not been fully initialized yet
-   * Therefore, we must use native JDBC to execute any initialization code, rather than jdbcTemplate & services like the UserService
-   * @param dataSource
-   */
-  private void initData(DataSource dataSource) {
-	User defaultUser = new User();
-	defaultUser.setUsername(env.getProperty("admin.defaultUser"));
-	defaultUser.setEmail(env.getProperty("admin.defaultEmail"));
-	defaultUser.setPassword(env.getProperty("admin.defaultPassword"));
-	defaultUser.setRole("admin");
-	try (Connection conn = dataSource.getConnection()) {
-		PreparedStatement ps = conn.prepareStatement("INSERT IGNORE INTO users(username, first_name, last_name, role, password, email, enabled) values(?,?,?,?,?,?, TRUE)");
-		ps.setString(1, defaultUser.getUsername());
-		ps.setString(2, defaultUser.getFirstName());
-		ps.setString(3, defaultUser.getLastName());
-		ps.setString(4, defaultUser.getRole());
-		ps.setString(5, defaultUser.getPassword());
-		ps.setString(6, defaultUser.getEmail());
-		ps.execute();
-	} catch (SQLException e) {
-		e.printStackTrace();
+	@Bean
+	public DataSource getDataSource() {
+		BasicDataSource dataSource = new BasicDataSource();
+		dataSource.setDriverClassName(env.getProperty("mysql.driver"));
+		dataSource.setUrl(env.getProperty("mysql.jdbcUrl"));
+		dataSource.setUsername(env.getProperty("mysql.username"));
+		dataSource.setPassword(env.getProperty("mysql.password"));
+		initData(dataSource);
+		return dataSource;
 	}
-  }
 
-  @Override
-  protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+	/**
+	 * DB has not been fully initialized yet Therefore, we must use native JDBC to
+	 * execute any initialization code, rather than jdbcTemplate & services like the
+	 * UserService
+	 * 
+	 * @param dataSource
+	 */
+	private void initData(DataSource dataSource) {
+		User defaultUser = new User();
+		defaultUser.setUsername(env.getProperty("admin.defaultUser"));
+		defaultUser.setEmail(env.getProperty("admin.defaultEmail"));
+		defaultUser.setPassword(env.getProperty("admin.defaultPassword"));
+		defaultUser.setRole("admin");
+		insertDefaultToDB(dataSource, defaultUser);
+	}
 
-    auth.jdbcAuthentication().dataSource(getDataSource())
-        .usersByUsernameQuery("select username, password, enabled"
-            + " from users where username=?")
-        .authoritiesByUsernameQuery("select username, role as authority "
-            + "from users where username=?")
-        .passwordEncoder(new BCryptPasswordEncoder());
-  }
+	private void insertDefaultToDB(DataSource dataSource, User defaultUser) {
+		try (Connection conn = dataSource.getConnection()) {
+			PreparedStatement ps = conn.prepareStatement(
+					"INSERT IGNORE INTO users(username, first_name, last_name, role, password, email, enabled) values(?,?,?,?,?,?, TRUE)");
+			ps.setString(1, defaultUser.getUsername());
+			ps.setString(2, defaultUser.getFirstName());
+			ps.setString(3, defaultUser.getLastName());
+			ps.setString(4, defaultUser.getRole());
+			ps.setString(5, defaultUser.getPassword());
+			ps.setString(6, defaultUser.getEmail());
+			ps.execute();
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
 
-  @Override
-  protected void configure(HttpSecurity http) throws Exception {
-    http.csrf().and()
-      .authorizeRequests()
-	      .antMatchers("/web/**", "/*.js","/*.html","/*.js", "/", "/index.html").permitAll()
-	      .anyRequest().authenticated()
-      .and().httpBasic();
-  }
+	@Override
+	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+
+		auth.jdbcAuthentication().dataSource(getDataSource())
+				.usersByUsernameQuery("select username, password, enabled" + " from users where username=?")
+				.authoritiesByUsernameQuery("select username, role as authority " + "from users where username=?")
+				.passwordEncoder(new BCryptPasswordEncoder());
+	}
+
+	@Override
+	protected void configure(HttpSecurity http) throws Exception {
+		http.csrf().and().authorizeRequests().antMatchers("/web/**", "/*.js", "/*.html", "/*.js", "/", "/index.html")
+				.permitAll().anyRequest().authenticated().and().httpBasic();
+	}
 
 }
-  
