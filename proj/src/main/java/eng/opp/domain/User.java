@@ -3,19 +3,19 @@ package eng.opp.domain;
 import org.springframework.security.crypto.bcrypt.BCrypt;
 
 public class User {
-	
+
 	private Long id;
-	
+
 	private String username;
-	
+
 	private String firstName;
-	
+
 	private String lastName;
-	
+
 	private String role;
-	
+
 	private String password;
-	
+
 	private String email;
 
 	public Long getId() {
@@ -73,6 +73,5 @@ public class User {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	
 
 }
