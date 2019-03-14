@@ -1,6 +1,7 @@
 /.metadata/
 /.gradle/
 /proj/src/main/resources/application.properties
+/proj/src/main/resources/static
 .classpath
 .project
 bin/

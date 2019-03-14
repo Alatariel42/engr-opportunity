@@ -5,3 +5,5 @@
 .settings/*
 /bin
 bin
+src/main/resources/static
+.vscode
