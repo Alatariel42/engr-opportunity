@@ -9,10 +9,8 @@ buildscript {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
 }
-
-apply plugin: 'java'
-apply plugin: 'eclipse'
 apply plugin: 'org.springframework.boot'
+apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
 
 group = 'eng.opp'
@@ -23,6 +21,7 @@ repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
+	maven { url "http://repo.spring.io/libs-milestone" }
 }
 
 
@@ -38,6 +37,17 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('org.postgresql:postgresql')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.integration:spring-integration-core")
+    compile 'com.google.appengine:appengine-api-1.0-sdk:+'
+     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    testCompile 'com.google.appengine:appengine-testing:+'
+	testCompile 'com.google.appengine:appengine-api-stubs:+'
+	testCompile 'com.google.appengine:appengine-tools-sdk:+'
+}
+
+configurations.all {
+  exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+  exclude group: 'org.slf4j', module: 'jul-to-slf4j'
 }
 
 dependencyManagement {
@@ -45,3 +55,23 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
+<<<<<<< Updated upstream
+=======
+
+sourceSets {
+	main {
+		resources {
+			srcDirs = ["$webappDir/dist", "$projectDir/src/main/resources"]
+		}
+	}
+}
+
+processResources {
+	dependsOn "buildAngular"
+}
+
+
+task buildAngular(type: NpmTask, dependsOn: npmInstall) {
+	args = ['run', 'build']
+}
+>>>>>>> Stashed changes
