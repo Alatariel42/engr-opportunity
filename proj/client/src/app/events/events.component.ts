@@ -1,6 +1,8 @@
+import { EventSignupComponent } from './../event-signup/event-signup.component';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
 import { Options } from 'fullcalendar';
 import { CalendarComponent } from 'ng-fullcalendar';
+import { MatDialog } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-events',
@@ -11,7 +13,7 @@ import { CalendarComponent } from 'ng-fullcalendar';
 export class EventsComponent implements OnInit {
   calendarOptions: Options;
   @ViewChild(CalendarComponent) calendar: CalendarComponent;
-  constructor() {}
+  constructor(private dialogService: MatDialog) {}
   ngOnInit() {
      this.calendarOptions = {
         editable: false,
@@ -23,12 +25,20 @@ export class EventsComponent implements OnInit {
         },
         events: [
           {
+            id: 585,
             title: 'Family Promise',
             start: '2019-01-28T18:30:00+05:00',
             end: '2019-01-28T19:30:00+05:00'
           }
         ]
       };
+  }
+
+  eventClick(event) {
+    const dialogRef = this.dialogService.open(EventSignupComponent, {data: event});
+    dialogRef.afterClosed().subscribe(result => {
+
+    });
   }
 
 }

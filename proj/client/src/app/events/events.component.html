@@ -1,1 +1,1 @@
-<ng-fullcalendar #calendar [options]="calendarOptions"></ng-fullcalendar>
+<ng-fullcalendar #calendar [options]="calendarOptions" (eventClick)="eventClick($event.detail.event)"></ng-fullcalendar>

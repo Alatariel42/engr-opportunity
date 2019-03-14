@@ -14,6 +14,7 @@ import { HeaderComponent } from './header/header.component';
 import {FlexLayoutModule, BREAKPOINT} from '@angular/flex-layout';
 import { EventsComponent } from './events/events.component';
 import { FullCalendarModule } from 'ng-fullcalendar';
+import { EventSignupComponent } from './event-signup/event-signup.component';
 
 const routes: Routes = [
   {
@@ -50,7 +51,8 @@ const routes: Routes = [
     NewsComponent,
     GetInvolvedComponent,
     HeaderComponent,
-    EventsComponent
+    EventsComponent,
+    EventSignupComponent
   ],
   imports: [
     BrowserModule,
@@ -60,6 +62,7 @@ const routes: Routes = [
     FlexLayoutModule,
     FullCalendarModule
   ],
+  entryComponents: [EventSignupComponent],
   providers: [],
   bootstrap: [AppComponent]
 })
