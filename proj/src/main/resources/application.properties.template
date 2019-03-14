@@ -1,0 +1,8 @@
+mysql.jdbcUrl=jdbc:mysql://localhost:3306/engopp
+mysql.username=root
+mysql.password=
+security.ignored=/**
+spring.security.enabled=true
+admin.defaultUser=user
+admin.defaultEmail=user@email
+admin.defaultPass=password

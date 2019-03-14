@@ -18,13 +18,12 @@ plugins {
 }
 
 apply plugin: 'org.springframework.boot'
+apply plugin: 'java'
 apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
-apply plugin: 'java'
 apply plugin: 'com.google.cloud.tools.appengine'
-apply plugin: 'war'
-apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
 def webappDir = "$projectDir/client"
 
@@ -53,12 +52,16 @@ ext {
 }
 
 dependencies {
+	compile("org.springframework.boot:spring-boot-starter-thymeleaf")
 	compile('org.springframework.boot:spring-boot-starter-actuator')
 	compile('org.springframework.boot:spring-boot-starter-web')
-	compile('org.springframework.cloud:spring-cloud-starter-oauth2')
+    compile("org.springframework.boot:spring-boot-starter-security")
 	compile('org.springframework.cloud:spring-cloud-starter-security')
+	compile("org.springframework:spring-jdbc")
+    compile('mysql:mysql-connector-java')
+	compile group: 'org.apache.commons', name: 'commons-dbcp2', version: '2.5.0'
 	runtime('org.springframework.boot:spring-boot-devtools')
-	runtime('org.postgresql:postgresql')
+	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.integration:spring-integration-core")
     compile 'com.google.appengine:appengine-api-1.0-sdk:+'
@@ -90,7 +93,6 @@ sourceSets {
 processResources {
 	dependsOn "buildAngular"
 }
-
 
 task buildAngular(type: NpmTask, dependsOn: npmInstall) {
 	args = ['run', 'build']
