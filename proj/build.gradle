@@ -55,8 +55,6 @@ dependencyManagement {
 		mavenBom "org.springframework.cloud:spring-cloud-dependencies:${springCloudVersion}"
 	}
 }
-<<<<<<< Updated upstream
-=======
 
 sourceSets {
 	main {
@@ -74,4 +72,3 @@ processResources {
 task buildAngular(type: NpmTask, dependsOn: npmInstall) {
 	args = ['run', 'build']
 }
->>>>>>> Stashed changes
