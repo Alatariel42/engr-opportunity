@@ -8,14 +8,37 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
+	dependencies {
+      classpath 'com.google.cloud.tools:appengine-gradle-plugin:1.+'
+    }
 }
+
+plugins {
+  id "com.moowork.node" version "1.2.0"
+}
+
 apply plugin: 'org.springframework.boot'
 apply plugin: 'eclipse'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'java'
+apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'war'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+def webappDir = "$projectDir/client"
+
+node {
+    version = '8.9.0'
+    npmVersion = '5.4.2'
+    download = true
+    nodeModulesDir = file("${webappDir}")
+}
 
 group = 'eng.opp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
+
 
 repositories {
 	mavenCentral()
@@ -39,7 +62,7 @@ dependencies {
 	testCompile('org.springframework.boot:spring-boot-starter-test')
     compile("org.springframework.integration:spring-integration-core")
     compile 'com.google.appengine:appengine-api-1.0-sdk:+'
-     providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
     testCompile 'com.google.appengine:appengine-testing:+'
 	testCompile 'com.google.appengine:appengine-api-stubs:+'
 	testCompile 'com.google.appengine:appengine-tools-sdk:+'
