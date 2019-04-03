@@ -8,16 +8,22 @@ buildscript {
 	dependencies {
 		classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
 	}
+	dependencies {
+      classpath 'com.google.cloud.tools:appengine-gradle-plugin:1.+'
+    }
 }
 
 plugins {
   id "com.moowork.node" version "1.2.0"
 }
 
+apply plugin: 'org.springframework.boot'
 apply plugin: 'java'
 apply plugin: 'eclipse'
-apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
+apply plugin: 'com.google.cloud.tools.appengine'
+apply plugin: 'io.spring.dependency-management'
+apply plugin: 'war'
 
 def webappDir = "$projectDir/client"
 
@@ -32,10 +38,12 @@ group = 'eng.opp'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 1.8
 
+
 repositories {
 	mavenCentral()
 	maven { url "https://repo.spring.io/snapshot" }
 	maven { url "https://repo.spring.io/milestone" }
+	maven { url "http://repo.spring.io/libs-milestone" }
 }
 
 
@@ -55,6 +63,17 @@ dependencies {
 	runtime('org.springframework.boot:spring-boot-devtools')
 	runtime('mysql:mysql-connector-java')
 	testCompile('org.springframework.boot:spring-boot-starter-test')
+    compile("org.springframework.integration:spring-integration-core")
+    compile 'com.google.appengine:appengine-api-1.0-sdk:+'
+    providedCompile 'javax.servlet:javax.servlet-api:3.1.0'
+    testCompile 'com.google.appengine:appengine-testing:+'
+	testCompile 'com.google.appengine:appengine-api-stubs:+'
+	testCompile 'com.google.appengine:appengine-tools-sdk:+'
+}
+
+configurations.all {
+  exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+  exclude group: 'org.slf4j', module: 'jul-to-slf4j'
 }
 
 dependencyManagement {
@@ -74,8 +93,6 @@ sourceSets {
 processResources {
 	dependsOn "buildAngular"
 }
-
-
 
 task buildAngular(type: NpmTask, dependsOn: npmInstall) {
 	args = ['run', 'build']
