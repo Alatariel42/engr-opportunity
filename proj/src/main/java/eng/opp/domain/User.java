@@ -12,14 +12,49 @@ public class User {
 
 	private String lastName;
 
-	private String role;
+	private String roles[];
 
 	private String password;
 
 	private String email;
 
+	// private TrainingSession training;
+	// private Long trainingSessionId;
+
+	private long startDate;
+
+	private boolean archived;
+
 	public Long getId() {
 		return id;
+	}
+
+	/**
+	 * @return the archived
+	 */
+	public boolean isArchived() {
+		return archived;
+	}
+
+	/**
+	 * @param archived the archived to set
+	 */
+	public void setArchived(boolean archived) {
+		this.archived = archived;
+	}
+
+	/**
+	 * @return the startDate
+	 */
+	public long getStartDate() {
+		return startDate;
+	}
+
+	/**
+	 * @param startDate the startDate to set
+	 */
+	public void setStartDate(long startDate) {
+		this.startDate = startDate;
 	}
 
 	public void setId(Long id) {
@@ -50,12 +85,12 @@ public class User {
 		this.lastName = lastName;
 	}
 
-	public String getRole() {
-		return role;
+	public String[] getRoles() {
+		return roles;
 	}
 
-	public void setRole(String role) {
-		this.role = role;
+	public void setRoles(String roles[]) {
+		this.roles = roles;
 	}
 
 	public String getPassword() {

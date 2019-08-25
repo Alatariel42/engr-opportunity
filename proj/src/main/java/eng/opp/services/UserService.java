@@ -21,18 +21,18 @@ public class UserService {
   * Adds a new user to the database
   */
   public ResponseEntity<User> add(User user) {
-    String sql = "INSERT INTO users(username, first_name, last_name, role, password, email, enabled) values(?,?,?,?,?,?, TRUE)";
-    jdbc.update(sql, user.getUsername(), user.getFirstName(), user.getLastName(), user.getRole(), user.getPassword(), user.getEmail());
-	return new ResponseEntity<>(user, HttpStatus.OK);
+    String sql = "INSERT INTO users(username, first_name, last_name, roles, password, email, enabled) values(?,?,?,?,?,?, TRUE)";
+    jdbc.update(sql, user.getUsername(), user.getFirstName(), user.getLastName(), user.getRoles(), user.getPassword(), user.getEmail());
+	  return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   /**
   * Updates a user in the database
   */
   public ResponseEntity<User> update(User user) {
-    String sql = "UPDATE users SET first_name=?, last_name=?, role=?, password=?, email=? WHERE username=?";
-    jdbc.update(sql, user.getFirstName(), user.getLastName(), user.getRole(), user.getPassword(), user.getEmail(), user.getUsername());
-	return new ResponseEntity<>(user, HttpStatus.OK);
+    String sql = "UPDATE users SET first_name=?, last_name=?, roles=?, password=?, email=? WHERE username=?";
+    jdbc.update(sql, user.getFirstName(), user.getLastName(), user.getRoles(), user.getPassword(), user.getEmail(), user.getUsername());
+	  return new ResponseEntity<>(user, HttpStatus.OK);
   }
 
   /**
@@ -41,6 +41,6 @@ public class UserService {
   public ResponseEntity<Void> delete(String username) {
     String sql = "DELETE FROM users WHERE username=?";
     jdbc.update(sql, username);
-	return new ResponseEntity<>(HttpStatus.OK);
+  	return new ResponseEntity<>(HttpStatus.OK);
   }
 }
