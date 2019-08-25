@@ -1,5 +1,6 @@
 package eng.opp.config;
 
+import java.sql.Array;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -18,6 +19,7 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import eng.opp.domain.Role;
 import eng.opp.domain.User;
 
 @Configuration
@@ -51,18 +53,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 		defaultUser.setUsername(env.getProperty("admin.defaultUser"));
 		defaultUser.setEmail(env.getProperty("admin.defaultEmail"));
 		defaultUser.setPassword(env.getProperty("admin.defaultPassword"));
-		defaultUser.setRole("admin");
+		defaultUser.setRoles(new String[]{Role.WebMaster.toString()});
 		insertDefaultToDB(dataSource, defaultUser);
 	}
 
 	private void insertDefaultToDB(DataSource dataSource, User defaultUser) {
 		try (Connection conn = dataSource.getConnection()) {
+			Array rolesArray = conn.createArrayOf("VARCHAR", defaultUser.getRoles());
 			PreparedStatement ps = conn.prepareStatement(
 					"INSERT IGNORE INTO users(username, first_name, last_name, role, password, email, enabled) values(?,?,?,?,?,?, TRUE)");
 			ps.setString(1, defaultUser.getUsername());
 			ps.setString(2, defaultUser.getFirstName());
 			ps.setString(3, defaultUser.getLastName());
-			ps.setString(4, defaultUser.getRole());
+			ps.setArray(4, rolesArray);
 			ps.setString(5, defaultUser.getPassword());
 			ps.setString(6, defaultUser.getEmail());
 			ps.execute();
@@ -76,7 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 		auth.jdbcAuthentication().dataSource(getDataSource())
 				.usersByUsernameQuery("select username, password, enabled" + " from users where username=?")
-				.authoritiesByUsernameQuery("select username, role as authority " + "from users where username=?")
+				.authoritiesByUsernameQuery("select username, roles as authority " + "from users where username=?")
 				.passwordEncoder(new BCryptPasswordEncoder());
 	}
 

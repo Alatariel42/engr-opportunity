@@ -23,7 +23,7 @@ public class AdminController {
     + "enabled BOOLEAN NOT NULL DEFAULT TRUE,"
     + "first_name VARCHAR(191),"
     + "last_name VARCHAR(191),"
-    + "role VARCHAR(50),"
+    + "roles VARCHAR(50)[]DEFAULT'{}',"
     + "password VARCHAR(191) NOT NULL,"
     + "email VARCHAR(191) UNIQUE"
     + ")";
