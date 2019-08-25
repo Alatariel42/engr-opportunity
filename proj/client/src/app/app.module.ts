@@ -10,10 +10,10 @@ import { CurriculumComponent } from './curriculum/curriculum.component';
 import { NewsComponent } from './news/news.component';
 import { GetInvolvedComponent } from './get-involved/get-involved.component';
 import { HeaderComponent } from './header/header.component';
+import { FullCalendarModule } from '@fullcalendar/angular';
 
 import {FlexLayoutModule, BREAKPOINT} from '@angular/flex-layout';
 import { EventsComponent } from './events/events.component';
-import { FullCalendarModule } from 'ng-fullcalendar';
 import { EventSignupComponent } from './event-signup/event-signup.component';
 
 const routes: Routes = [

@@ -1,8 +1,7 @@
 import { EventSignupComponent } from './../event-signup/event-signup.component';
 import { Component, OnInit, ViewChild, ViewEncapsulation } from '@angular/core';
-import { Options } from 'fullcalendar';
-import { CalendarComponent } from 'ng-fullcalendar';
 import { MatDialog } from '@angular/material/dialog';
+import dayGridPlugin from '@fullcalendar/daygrid';
 
 @Component({
   selector: 'app-events',
@@ -11,11 +10,11 @@ import { MatDialog } from '@angular/material/dialog';
   encapsulation: ViewEncapsulation.None
 })
 export class EventsComponent implements OnInit {
-  calendarOptions: Options;
-  @ViewChild(CalendarComponent) calendar: CalendarComponent;
+  options: any;
+  calendarPlugins = [dayGridPlugin]; // important!
   constructor(private dialogService: MatDialog) {}
   ngOnInit() {
-     this.calendarOptions = {
+     this.options = {
         editable: false,
         eventLimit: false,
         header: {

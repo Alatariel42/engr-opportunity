@@ -1,1 +1,1 @@
-<ng-fullcalendar #calendar [options]="calendarOptions" (eventClick)="eventClick($event.detail.event)"></ng-fullcalendar>
+<full-calendar #calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [editable]="options.editable" [eventLimit]="options.eventLimit" [header]="options.header" [events]="options.events"  (dateClick)="eventClick($event.detail.event)"></full-calendar>
