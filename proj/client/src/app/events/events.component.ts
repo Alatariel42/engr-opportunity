@@ -27,8 +27,8 @@ export class EventsComponent implements OnInit {
           {
             id: 585,
             title: 'Family Promise',
-            start: '2019-01-28T18:30:00+05:00',
-            end: '2019-01-28T19:30:00+05:00'
+            start: '2019-08-28T18:30:00+05:00',
+            end: '2019-08-28T19:30:00+05:00'
           }
         ]
       };
