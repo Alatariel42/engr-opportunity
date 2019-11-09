@@ -1,13 +1,9 @@
-<mat-toolbar role="banner">
-  <mat-toolbar-row class="banner-row">
-      <a class="logo" routerLink="home" routerLinkActive #rla="routerLinkActive"> <img src="../assets/logo.png"> </a>
-  </mat-toolbar-row>
-</mat-toolbar>
 <mat-toolbar>
   <mat-toolbar-row>
     <nav mat-tab-nav-bar fxFlex fxLayout="row" fxLayoutAlign="end">
       <a mat-tab-link fxFlex="auto" *ngFor="let link of navLinks" [routerLink]="link.path" routerLinkActive #rla="routerLinkActive">
-        {{link.label}}
+        <span *ngIf="link.label">{{link.label}}</span>
+        <img *ngIf="link.src" [src]="link.src" [alt]="link.alt">
       </a>
     </nav>
   </mat-toolbar-row>

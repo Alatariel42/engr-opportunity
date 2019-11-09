@@ -22,6 +22,16 @@ a {
   z-index: 1;
 }
 
-.banner-row {
-    height: 8rem;
+mat-toolbar, mat-toolbar-row, nav, .mat-tab-links, .mat-tab-link {
+    height: 5rem;
+}
+
+.mat-tab-link {
+    margin-top: .5rem;
+    height: 4rem;
+    margin-bottom: .5rem;
+}
+
+.mat-tab-link > span {
+    font-size: 24px;
 }
