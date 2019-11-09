@@ -1,1 +1,4 @@
-<full-calendar #calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [editable]="options.editable" [eventLimit]="options.eventLimit" [header]="options.header" [events]="options.events"  (dateClick)="eventClick($event.detail.event)"></full-calendar>
+<!-- <full-calendar #calendar defaultView="dayGridMonth" [plugins]="calendarPlugins" [editable]="options.editable" [eventLimit]="options.eventLimit" [header]="options.header" [events]="options.events"  (dateClick)="eventClick($event.detail.event)"></full-calendar> -->
+<div>
+    <iframe [src]="googeCalendarUrl" style="border-width:0" width="1600" height="1200" frameborder="0" scrolling="no"></iframe>
+</div>

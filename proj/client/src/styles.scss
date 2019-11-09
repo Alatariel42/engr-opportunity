@@ -8,10 +8,25 @@ body {
     margin: 0;
     // background: #313131;
     min-height: 100vh;
+    
 }
+
+* {
+    box-sizing: border-box;
+}
+
 
 mat-card {
     margin: 1rem;
+    width: calc(100% - 2rem);
+}
+
+@media only screen and (min-width: 800px) {
+    mat-card {
+        margin-left: 12rem;
+        margin-right: 12rem;
+        width: calc(100% - 24rem);
+    }
 }
 
 // @import '~@angular/material/theming';
