@@ -10,9 +10,19 @@
 }
 
 .card-image {
-    width: 16rem;
-    max-width: 100%;
+    max-width: 16rem;
     display: block;
     margin-left: auto;
     margin-right: auto;
+}
+
+@media only screen and (min-width: 1200px) {
+    mat-card-content {
+        display: flex;
+    }
+
+    .card-image {
+        max-height: 250px;
+        margin-right: 1rem;
+    }
 }
