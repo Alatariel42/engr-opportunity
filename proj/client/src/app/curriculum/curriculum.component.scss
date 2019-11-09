@@ -22,7 +22,13 @@
     }
 
     .card-image {
+        display: block;
         max-height: 250px;
         margin-right: 1rem;
+        min-width: 12rem;
+    }
+
+    p {
+        max-width: 80%;
     }
 }
