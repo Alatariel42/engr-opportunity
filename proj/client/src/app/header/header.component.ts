@@ -18,7 +18,8 @@ export class HeaderComponent implements OnInit {
     {
       path: 'home',
       src: '/assets/logo.png',
-      alt: 'home'
+      alt: 'home',
+      isLogo: true
     },
     {
       path: 'events',

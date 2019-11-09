@@ -10,12 +10,7 @@ body {
     min-height: 100vh;
 }
 
-p {
-  font-size: 20px;
-}
-
 * {
-    box-sizing: border-box;
     font-size: 20px;
 }
 
@@ -25,7 +20,7 @@ mat-card {
     width: calc(100% - 2rem);
 }
 
-@media only screen and (min-width: 800px) {
+@media only screen and (min-width: 1200px) {
     mat-card {
         margin-left: 12rem;
         margin-right: 12rem;

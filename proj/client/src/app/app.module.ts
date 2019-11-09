@@ -3,6 +3,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { RouterModule, Routes } from '@angular/router';
+import {MatSidenavModule} from '@angular/material/sidenav';
 
 import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
@@ -15,6 +16,8 @@ import { FullCalendarModule } from '@fullcalendar/angular';
 import {FlexLayoutModule, BREAKPOINT} from '@angular/flex-layout';
 import { EventsComponent } from './events/events.component';
 import { EventSignupComponent } from './event-signup/event-signup.component';
+import { MobileHeaderComponent } from './mobile-header/mobile-header.component';
+import { MobileSidebarComponent } from './mobile-sidebar/mobile-sidebar.component';
 
 const routes: Routes = [
   {
@@ -52,7 +55,9 @@ const routes: Routes = [
     GetInvolvedComponent,
     HeaderComponent,
     EventsComponent,
-    EventSignupComponent
+    EventSignupComponent,
+    MobileHeaderComponent,
+    MobileSidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -60,7 +65,8 @@ const routes: Routes = [
     RouterModule.forRoot(routes),
     MaterialImportsModule,
     FlexLayoutModule,
-    FullCalendarModule
+    FullCalendarModule,
+    MatSidenavModule
   ],
   entryComponents: [EventSignupComponent],
   providers: [],

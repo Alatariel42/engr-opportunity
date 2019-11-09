@@ -1,0 +1,9 @@
+<nav>
+    <div mat-tab-nav-bar class="nav-entry" *ngFor="let link of navLinks">
+        <div *ngIf="!link.isLogo">
+            <a mat-tab-link (click)="navigate(link)" (keydown.space)="navigate(link)" (keydown.enter)="navigate(link)" routerLinkActive #rla="routerLinkActive">
+                {{link.label}}
+            </a>
+        </div>
+    </div>
+</nav>
