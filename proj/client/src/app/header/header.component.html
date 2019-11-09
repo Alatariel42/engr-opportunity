@@ -1,6 +1,6 @@
 <mat-toolbar role="banner">
   <mat-toolbar-row>
-      <a class="logo" href="/home"> <img src="../assets/logo.png"> </a>
+      <a class="logo" [routerLink]="home" routerLinkActive #rla="routerLinkActive"> <img src="../assets/logo.png"> </a>
   </mat-toolbar-row>
   <mat-toolbar-row>
     <nav mat-tab-nav-bar fxFlex fxLayout="row" fxLayoutAlign="end">
