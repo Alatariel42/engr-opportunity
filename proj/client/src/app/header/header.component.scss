@@ -3,7 +3,8 @@ h1 {
 }
 img {
   margin: auto;
-  height:170%;
+  max-height: 100%;
+  max-width: 100%;
 }
 
 nav {
@@ -18,4 +19,9 @@ a {
 .logo {
   margin:auto;
   height:100%;
+  z-index: 1;
+}
+
+.banner-row {
+    height: 8rem;
 }
