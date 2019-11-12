@@ -16,9 +16,9 @@ export class HeaderComponent implements OnInit {
       label: 'Curriculum'
     },
     {
-      path: 'home',
+      path: '',
       src: '/assets/logo.png',
-      alt: 'home',
+      alt: 'Engineering Opportunity Logo, navigate home',
       isLogo: true
     },
     {

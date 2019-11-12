@@ -35,3 +35,14 @@ mat-toolbar, mat-toolbar-row, nav, .mat-tab-links, .mat-tab-link {
 .mat-tab-link > span {
     font-size: 24px;
 }
+
+@import '~@angular/material/theming';
+
+@mixin header-theme($theme){
+    $primary: map-get($theme, primary);
+    $accent: map-get($theme, accent);
+    
+    mat-toolbar {
+        color: mat-color($accent);
+    }
+}

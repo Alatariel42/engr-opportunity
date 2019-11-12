@@ -1,3 +1,4 @@
+import { HomeComponent } from './home/home.component';
 import { MaterialImportsModule } from './material-imports/material-imports.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -42,8 +43,11 @@ const routes: Routes = [
   },
   {
     path: '',
-    redirectTo: '/about',
-    pathMatch: 'full'
+    component: HomeComponent
+  },
+  {
+    path: '*',
+    redirectTo: '/about'
   }
 ];
 @NgModule({
@@ -57,7 +61,8 @@ const routes: Routes = [
     EventsComponent,
     EventSignupComponent,
     MobileHeaderComponent,
-    MobileSidebarComponent
+    MobileSidebarComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
