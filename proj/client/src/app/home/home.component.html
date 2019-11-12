@@ -1,40 +1,69 @@
+
 <div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"  fxLayoutGap=".5rem" fxLayoutAlign="space-around center">
-  <mat-card fxFlex="" role="group">
-    <img src="../assets/basic-bot-original.jpg" alt="A basic lego EV3 robot">
-  </mat-card>
-  <mat-card fxFlex="" role="group">
-    <img src="../assets/gathered-parts.JPG" alt="An assortment of EV3 pieces used to assemble a robot">
-  </mat-card>
-  <mat-card fxFlex="" role="group">
-    <img src="../assets/custom-basic-bot.jpg" alt="A customized version of one of our robots using a sensor for eyes, and swords for decoration">
-  </mat-card>
-  <mat-card fxFlex="" role="group">
-    <img src="../assets/simple-program2.png" alt="A simple program that turns motors and plays the sound 'Mindstorms'">
-  </mat-card>
-</div>
-<div fxLayout="column" fxLayoutAlign="space-around center">
-  <mat-card>
-    <mat-card-title>
-      <h2></h2>
-    </mat-card-title>
+  <mat-card fxFlex="">
     <mat-card-content>
-      <p>
-        Facilitating LEGO robotics & conceptual STEM workshops with a focus on accessibility through:
-        * community partnerships
-        * specialized curriculua
-        * dedicated volunteers
-      </p>
+      <div class="mission">
+        Facilitating LEGO robotics & conceptual STEM workshops with a focus on accessibility through
+        <div class="inner-section" fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"  fxLayoutGap=".5rem" fxLayoutAlign="space-around center">
+          <div fxFlex="" role="text">
+            <div><mat-icon aria-hidden="true">business</mat-icon></div>
+            <div class="inner-section">community partnerships</div>
+          </div>
+          <div fxFlex="">
+            <div><mat-icon aria-hidden="true">school</mat-icon></div>
+            <div class="inner-section">specialized curriculua</div>
+          </div>
+          <div fxFlex="">
+            <div><mat-icon aria-hidden="true">group</mat-icon></div>
+            <div class="inner-section">dedicated volunteers</div>
+          </div>
+        </div>
+      </div>
     </mat-card-content>
   </mat-card>
+  <mat-card fxFlex="">
+    <mat-card-content>
+      <figure>
+          <img src="/assets/bot-race.jpg" alt="four bots racing">
+          <figcaption>Several LEGO Mindstorms EV3 Robots racing</figcaption>
+      </figure>
+    </mat-card-content>
+  </mat-card>
+</div>
+<div fxLayout="row" fxLayout.xs="column" fxLayout.sm="column" fxLayout.md="column"  fxLayoutGap=".5rem" fxLayoutAlign="space-around center">
+    <mat-card fxFlex="" role="group">
+      <figure>
+        <img src="/assets/basic-bot-original.jpg" alt="A basic lego EV3 robot">
+        <figcaption>A LEGO Mindstorms EV3 Robot</figcaption>
+      </figure>
+    </mat-card>
+    <mat-card fxFlex="" role="group">
+      <figure>
+        <img src="/assets/gathered-parts.JPG" alt="An assortment of EV3 pieces used to assemble a robot">
+        <figcaption>Pieces needed to assemble one step of one of our EV3 Robots</figcaption>
+      </figure>
+    </mat-card>
+    <mat-card fxFlex="" role="group">
+      <figure>
+        <img src="/assets/custom-basic-bot.jpg" alt="A customized version of one of our robots using a sensor for eyes, and swords for decoration">
+        <figcaption>A customized robot with a sensors and swords for decoration</figcaption>
+      </figure>
+    </mat-card>
+    <mat-card fxFlex="" role="group">
+      <figure>
+        <img src="/assets/simple-program2.png" alt="A simple program that turns motors and plays the sound 'Mindstorms'"> 
+        <figcaption>A EV3 program that moves a motor and makes a noise</figcaption>
+      </figure>
+
+    </mat-card>
+  </div>
+<div fxLayout="column" fxLayoutAlign="space-around center">
   <mat-card>
-    <mat-card-title>
-      <h2></h2>
-    </mat-card-title>
     <mat-card-content>
       <p>
-                We currently work with children & teens ages 8-18 in the Raleigh area.
-                <br>
-        Please visit **this portion of our site** if you're interested in working with us!
+        We currently work with children & teens ages 8-18 in the Raleigh area.
+        <br>
+        Please visit <a routerLink="get-involved">Get Involved</a> if you're interested in working with us!
       </p>
     </mat-card-content>
   </mat-card>
