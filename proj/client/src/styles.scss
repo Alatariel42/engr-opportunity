@@ -14,7 +14,9 @@ $theme: mat-light-theme($primary, $accent, $warn);
 
 @include angular-material-theme($theme);
 
-
+html {
+    font-size: 24px;
+}
 
 
 body {
@@ -23,11 +25,6 @@ body {
     min-height: 100vh;
     background-color: map_get($mat-indigo, 50);
 }
-
-* {
-    font-size: 20px;
-}
-
 
 mat-card {
     margin: 1rem;
@@ -40,5 +37,5 @@ mat-card {
     max-width: 48rem;
 }
 .mat-card-content {
-    font-size: 16px;
+    font-size: 1rem;
 }
