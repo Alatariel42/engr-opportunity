@@ -13,7 +13,7 @@ nav {
 
 a {
     opacity: 1;
-    font-size: 24px;
+    font-size: 1.25rem;
 }
 
 .logo {
@@ -33,7 +33,7 @@ mat-toolbar, mat-toolbar-row, nav, .mat-tab-links, .mat-tab-link {
 }
 
 .mat-tab-link > span {
-    font-size: 24px;
+    font-size: 1.25rem;
 }
 
 @import '~@angular/material/theming';
